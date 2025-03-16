@@ -1,0 +1,114 @@
+﻿/*using MiuLibrary.Constants;
+using System.Net;
+using System.Net.Sockets;
+using System.Text.Json;
+
+namespace MiuLibrary.Sockets
+{
+    public class _SocketClient
+    {
+        public Socket client;
+        public IPEndPoint IP { get; set; }
+        public string IpAddress { get; set; }
+        public int Port { get; set; }
+        public SocketClient(string ipAddress, int port)
+        {
+            this.IpAddress = ipAddress;
+            this.Port = port;
+        }
+
+        public void Connect()
+        {
+            if (client != null && client.Connected) return;
+            try
+            {
+                IP = new IPEndPoint(IPAddress.Parse(IpAddress), Port);
+                client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+                client.Connect(IP);
+            }
+            catch (Exception er)
+            {
+                throw new InvalidOperationException($"Error At: {er.Message}\n{er.StackTrace}");
+            }
+        }
+        public void Receive()
+        {
+            try
+            {
+                while (true)
+                {
+                    byte[] data = new byte[1024 * 5000];
+                    int received = client.Receive(data);
+
+                    if (received > 0)
+                    {
+                        byte[] validData = new byte[received];
+                        Array.Copy(data, validData, received);
+
+                        var receivedObj = Deserialize<Models.Message>(validData);
+                        if (receivedObj != null && !Utils._checkEmpty(receivedObj.MessageType))
+                        {
+
+                        }
+                    }
+                }
+            }
+            catch (Exception er)
+            {
+                throw new InvalidOperationException($"Error At: {er.Message}\n{er.StackTrace}");
+            }
+        }
+        public void Close()
+        {
+            client.Close();
+        }
+        /// <summary>
+        /// Chuyển đổi kiểu dữ liệu Json về dạng một đối tượng T cụ thể
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidCastException"></exception>
+        private T DeserializeFromJsonElement<T>(object data)
+        {
+            if (data is JsonElement jsonElement)
+            {
+                return JsonSerializer.Deserialize<T>(jsonElement.GetRawText());
+            }
+            throw new InvalidCastException("Cannot cast the object to the specified type.");
+        }
+        /// <summary>
+        /// Gửi dữ liệu cho Server
+        /// </summary>
+        /// <param name="obj">Giá trị dữ liệu gửi đi</param>
+        public void Send(object obj)
+        {
+            if (obj != null && !string.IsNullOrEmpty(obj.ToString()))
+            {
+                byte[] data = Serialize(obj);
+                client.Send(data);
+            }
+        }
+        /// <summary>
+        /// Chuyển đối tượng T về mảng byte
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj">Đối tượng kiểu T</param>
+        /// <returns></returns>
+        public byte[] Serialize<T>(T obj)
+        {
+            return JsonSerializer.SerializeToUtf8Bytes(obj); // Chuyển đối tượng thành mảng byte
+        }
+        /// <summary>
+        /// Chuyển mảng byte về đối tượng T
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data">Mảng dữ liệu truyền đến</param>
+        /// <returns></returns>
+        public T Deserialize<T>(byte[] data)
+        {
+            return JsonSerializer.Deserialize<T>(data);
+        }
+    }
+}
+*/
