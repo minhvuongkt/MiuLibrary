@@ -1,8 +1,34 @@
-# Miu Library (Ngôn ngữ C#)
-**Có các chức năng chính sau:**
+# 📚 Miu Library (C#)
+**Thư viện hỗ trợ giao tiếp Socket và các tiện ích hữu ích trong C#**
 
-    *1. Code dùng cho socket, client có thể kết nối đến server qua ip và port thông qua gọi hàm SocketClient
+## ✨ Tính năng chính
 
-    *2. Mục Utils có các chức năng như: Random số ngẫu nhiên, lấy thời gian từ mili đến second, ghi log (hàm WriteLog(string log)),...vân vân...
+### 🖧 1. Kết nối Socket Client
+- Hỗ trợ kết nối đến Server thông qua `IP` và `Port`.
+- Dễ dàng sử dụng thông qua hàm `SocketClient`.
 
-    *3. Model sử dụng trong Socket là Message với 2 tham số là string MessageType và object Data (để có thể đa dạng hoá kiểu dữ liệu truyền vào)
+### 🛠 2. Mục Utils - Công cụ hỗ trợ
+- **Sinh số ngẫu nhiên**.
+- **Chuyển đổi thời gian** từ mili giây sang giây.
+- **Ghi log** dễ dàng bằng hàm:
+  ```csharp
+  WriteLog("Nội dung log");
+  ```
+- Và nhiều tiện ích khác...
+
+### 📦 3. Model `Message` cho Socket
+- Dùng để truyền nhận dữ liệu với 2 tham số chính:
+  ```csharp
+  public class Message
+  {
+      public string MessageType { get; set; }
+      public object Data { get; set; }
+  }
+  ```
+- Giúp linh hoạt trong việc truyền tải nhiều kiểu dữ liệu khác nhau.
+
+## 🚀 Hướng dẫn sử dụng
+> **Cập nhật sau** – sẽ có hướng dẫn chi tiết cách sử dụng thư viện.
+
+## 📜 Giấy phép
+Miu Library được phát triển với mục đích hỗ trợ lập trình viên, sử dụng tự do theo nhu cầu cá nhân hoặc doanh nghiệp.
